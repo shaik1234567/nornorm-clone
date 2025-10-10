@@ -5,8 +5,6 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary' | 'outline'
   size?: 'sm' | 'md' | 'lg'
   children: React.ReactNode
-  href?: string
-  asLink?: boolean
 }
 
 export default function Button({
@@ -14,11 +12,9 @@ export default function Button({
   size = 'md',
   className,
   children,
-  href,
-  asLink = false,
   ...props
 }: ButtonProps) {
-  const baseStyles = 'inline-flex items-center justify-center font-medium rounded-lg transition-all duration-200 hover:scale-105 active:scale-95 will-change-transform cursor-pointer'
+  const baseStyles = 'inline-flex items-center justify-center font-medium rounded-lg transition-all duration-200 hover:scale-105 active:scale-95 will-change-transform'
   
   const variants = {
     primary: 'bg-black text-white hover:bg-gray-800',
@@ -32,40 +28,9 @@ export default function Button({
     lg: 'px-8 py-4 text-lg',
   }
 
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
-    if (href && href.startsWith('#')) {
-      e.preventDefault()
-      const element = document.querySelector(href)
-      if (element) {
-        const offset = 80
-        const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
-        window.scrollTo({
-          top: elementPosition - offset,
-          behavior: 'smooth'
-        })
-      }
-    }
-    if (props.onClick && !asLink) {
-      props.onClick(e as React.MouseEvent<HTMLButtonElement>)
-    }
-  }
-
-  if (asLink && href) {
-    return (
-      <a
-        href={href}
-        onClick={handleClick}
-        className={cn(baseStyles, variants[variant], sizes[size], className)}
-      >
-        {children}
-      </a>
-    )
-  }
-
   return (
     <button
       className={cn(baseStyles, variants[variant], sizes[size], className)}
-      onClick={handleClick}
       {...props}
     >
       {children}
