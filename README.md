@@ -3,7 +3,7 @@
 A high-fidelity recreation of the NORNORM website built with Next.js 15, TypeScript, Tailwind CSS v4, and Framer Motion.
 
 ## 🚀 Live Demo
-**[View Live Site](https://your-deployment-url.vercel.app)**
+**[View Live Site](https://nornorm-clone-pearl.vercel.app/)**
 
 ## 🛠️ Tech Stack
 - **Framework:** Next.js 15 (App Router)
@@ -53,4 +53,4 @@ MIT License - Created for educational purposes
 
 ---
 
-Made with ⚡ by [Your Name]
+Made with ⚡ by [shaik shivaji]
